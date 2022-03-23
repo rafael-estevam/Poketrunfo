@@ -178,12 +178,12 @@ function sortearCarta() {
 }
 
 function cardImage (card, icon){
-    icon.style.backgroundImage = `url('Pokemon-jpg/${card.id}.jpg')`
+    icon.style.backgroundImage = `url('./Images/Pokemon-jpg/${card.id}.jpg')`
     icon.style.backgroundSize = "300px 225px"
     icon.style.backgroundPosition = "25px 45px"
     //icon.style.backgroundColor = "ff7f7f"
 
-    var moldura = `<img src="./Template.png"
+    var moldura = `<img src="./Images/template.png"
     style=" width: inherit; height: inherit; position: absolute;">`;
 
     var tagHTML = `<div id='opcoes' class='carta-status'>`
