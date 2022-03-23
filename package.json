@@ -1,0 +1,12 @@
+{
+  "name": "poketrunfo",
+  "version": "1.0.0",
+  "description": "Projeto na ImersãoDev da Alura para seus clientes",
+  "main": "superTrunfo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rafael",
+  "license": "ISC",
+  "type": "module"
+}
