@@ -1,5 +1,6 @@
-
 var deck = []
+var deckUser = []
+var deckCom = []
 
 deck.push ({"nome":"Bulbasaur", "tipo":"Grama","atributos":{"HP":45,"Ataque":49,"Defesa":49, "Velocidade":45}, "id": "001" })
 deck.push ({"nome":"Ivysaur", "tipo":"Grama","atributos":{"HP":60,"Ataque":62,"Defesa":63, "Velocidade":60}, "id": "002" })
@@ -155,6 +156,20 @@ deck.push ({"nome":"Mewtwo", "tipo":"Psíquico","atributos":{"HP":106,"Ataque":1
 
 //console.log(...deck)
 
+for (var i=0; i<75; i++){
+    deckUser.push (deck[parseInt(Math.random()*151)]);
+    deckCom.push (deck[parseInt(Math.random()*151)]);
+
+    if (deckUser.includes(deckUser[i])||deckCom.includes(deckUser[i])){
+        deckUser.push (deck[parseInt(Math.random()*151)]);
+    } else if (deckUser.includes(deckCom[i])||deckCom.includes(deckCom[i])){
+        deckCom.push (deck[parseInt(Math.random()*151)]);
+    }
+}
+
+//console.log (...deckUser);
+//console.log (...deckCom);
+
 var cardUser;
 var cardCom;
 var opcoes = document.getElementById("opcoes");
@@ -164,16 +179,21 @@ var cardComIcon = document.getElementById ("carta-maquina")
 
 function sortearCarta() {
     resultado.innerHTML = ""
+    cardComIcon.innerHTML = ""
 
-    cardCom = deck[parseInt(Math.random()*150)] ;
-    cardUser = deck[parseInt(Math.random()*150)] ;
+    cardComIcon.style.backgroundImage = ""
+    cardComIcon.style.backgroundSize = ""
+    cardComIcon.style.backgroundPosition = ""
+
+    cardCom = deckCom[parseInt(Math.random()*76)] ;
+    cardUser = deckUser[parseInt(Math.random()*76)] ;
 
     while (cardCom==cardUser){
-        cardCom = deck[parseInt(Math.random()*3)]
+        cardCom = deck[parseInt(Math.random()*76)]
     }
-    console.log(cardUser.nome, cardCom.nome);
+    //console.log(cardUser.nome, cardCom.nome);
 
-    //document.getElementById("btnSortear").disabled = true;
+    document.getElementById("btnSortear").disabled = true;
     cardImage(cardUser, cardUserIcon);
 }
 
@@ -181,7 +201,6 @@ function cardImage (card, icon){
     icon.style.backgroundImage = `url('./Images/Pokemon-jpg/${card.id}.jpg')`
     icon.style.backgroundSize = "300px 225px"
     icon.style.backgroundPosition = "25px 45px"
-    //icon.style.backgroundColor = "ff7f7f"
 
     var moldura = `<img src="./Images/template.png"
     style=" width: inherit; height: inherit; position: absolute;">`;
@@ -234,7 +253,7 @@ function jogar(){
 function typeChart (valorUser){
     var userType = cardUser.tipo;
     var comType = cardCom.tipo;
-    console.log (userType,comType)
+    //console.log (userType,comType)
 
     if (cardUser.tipo=="Fogo"&&(cardCom.tipo=="Água"||cardCom.tipo=="Terra"||cardCom.tipo=="Pedra")){
         valorUser = valorUser/2;
