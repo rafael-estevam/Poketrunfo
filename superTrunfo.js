@@ -156,19 +156,24 @@ deck.push ({"nome":"Mewtwo", "tipo":"Psíquico","atributos":{"HP":106,"Ataque":1
 
 //console.log(...deck)
 
+
 for (var i=0; i<75; i++){
-    deckUser.push (deck[parseInt(Math.random()*151)]);
-    deckCom.push (deck[parseInt(Math.random()*151)]);
+    var userTry = []
+    var comTry = []
+    userTry[0] = (deck[parseInt(Math.random()*151)]);
+    comTry[0] = (deck[parseInt(Math.random()*151)]);
 
-    if (deckUser.includes(deckUser[i])||deckCom.includes(deckUser[i])){
-        deckUser.push (deck[parseInt(Math.random()*151)]);
-    } else if (deckUser.includes(deckCom[i])||deckCom.includes(deckCom[i])){
-        deckCom.push (deck[parseInt(Math.random()*151)]);
+    while (deckUser.includes(userTry[0])||deckCom.includes(userTry[0])){
+        userTry[0] = (deck[parseInt(Math.random()*151)]);
+    }    
+
+    while (deckUser.includes(comTry[0])||deckCom.includes(comTry[0])){
+        comTry[0] = (deck[parseInt(Math.random()*151)]);
     }
-}
 
-//console.log (...deckUser);
-//console.log (...deckCom);
+    deckUser.push (userTry[0]);
+    deckCom.push (comTry[0]);
+}
 
 var cardUser;
 var cardCom;
